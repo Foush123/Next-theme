@@ -15,25 +15,25 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Config details
+ * Next Theme upgrade function.
  *
  * @package    theme_next_theme
- * @copyright  2015 LmsaceDev Team , lmsace.com
+ * @copyright  2015 onwards LMSACE Dev Team (http://www.lmsace.com)
+ * @author     LMSACE Dev Team
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- *
  */
-namespace theme_next_theme\privacy;
+
+defined('MOODLE_INTERNAL') || die();
 
 /**
- * Define for privacy provider.
+ * Upgrade function for Next Theme.
+ *
+ * @param int $oldversion
+ * @return bool
  */
-class provider implements \core_privacy\local\metadata\null_provider {
-    /**
-     * Returns meta data about this system.
-     *
-     * @return  string
-     */
-    public static function get_reason(): string {
-        return 'privacy:metadata';
-    }
+function xmldb_theme_next_theme_upgrade($oldversion) {
+    global $CFG;
+
+    // No upgrade steps needed for initial version.
+    return true;
 }

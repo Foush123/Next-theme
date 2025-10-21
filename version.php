@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version configuration for the theme academi
+ * Version configuration for the theme next_theme
  * @package    theme_next_theme
  * @copyright  2015 onwards LMSACE Dev Team (http://www.lmsace.com)
  * @author    LMSACE Dev Team

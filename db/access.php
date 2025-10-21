@@ -15,25 +15,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Config details
+ * Next Theme access control.
  *
  * @package    theme_next_theme
- * @copyright  2015 LmsaceDev Team , lmsace.com
+ * @copyright  2015 onwards LMSACE Dev Team (http://www.lmsace.com)
+ * @author     LMSACE Dev Team
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- *
  */
-namespace theme_next_theme\privacy;
 
-/**
- * Define for privacy provider.
- */
-class provider implements \core_privacy\local\metadata\null_provider {
-    /**
-     * Returns meta data about this system.
-     *
-     * @return  string
-     */
-    public static function get_reason(): string {
-        return 'privacy:metadata';
-    }
-}
+defined('MOODLE_INTERNAL') || die();
+
+$capabilities = array(
+    'theme/next_theme:configure' => array(
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'archetypes' => array(
+            'manager' => CAP_ALLOW
+        )
+    ),
+);

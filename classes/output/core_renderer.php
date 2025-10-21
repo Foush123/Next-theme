@@ -17,13 +17,13 @@
 /**
  * Course renderer.
  *
- * @package theme_academi
+ * @package theme_next_theme
  * @copyright 2023 onwards LMSACE Dev Team (http://www.lmsace.com)
  * @author LMSACE Dev Team
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace theme_academi\output;
+namespace theme_next_theme\output;
 
 use html_writer;
 use moodle_url;
@@ -60,7 +60,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @return string
      */
     public function footer_infolinks() {
-        $infolink = theme_academi_get_setting('infolink');
+        $infolink = theme_next_theme_get_setting('infolink');
         $menu = new custom_menu($infolink, current_language());
         $haslangmenu = $this->lang_menu() != '';
 
@@ -71,7 +71,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $content = '';
         foreach ($menu->get_children() as $item) {
             $context = $item->export_for_template($this);
-            $content .= $this->render_from_template('theme_academi/custom_menu_item', $context);
+            $content .= $this->render_from_template('theme_next_theme/custom_menu_item', $context);
         }
         return $content;
     }

@@ -17,18 +17,18 @@
 /**
  * Define install function.
  *
- * @package    theme_academi
+ * @package    theme_next_theme
  * @copyright  2015 onwards LMSACE Dev Team (http://www.lmsace.com)
  * @author     LMSACE Dev Team
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
- * Theme_academi install function.
+ * Theme_next_theme install function.
  *
  * @return void
  */
-function xmldb_theme_academi_install() {
+function xmldb_theme_next_theme_install() {
     global $CFG;
 
     if (method_exists('core_plugin_manager', 'reset_caches')) {
@@ -41,48 +41,48 @@ function xmldb_theme_academi_install() {
         $i = 1;
         $fs = get_file_storage();
         $filerecord = new stdClass();
-        $filerecord->component = 'theme_academi';
+        $filerecord->component = 'theme_next_theme';
         $filerecord->contextid = context_system::instance()->id;
         $filerecord->userid = get_admin()->id;
         $filerecord->filearea = 'slide1image';
         $filerecord->filepath = '/';
         $filerecord->itemid = 0;
         $filerecord->filename = 'slide1image.jpg';
-        $fs->create_file_from_pathname($filerecord, $CFG->dirroot . '/theme/academi/pix/home/slide1.jpg');
+        $fs->create_file_from_pathname($filerecord, $CFG->dirroot . '/theme/next_theme/pix/home/slide1.jpg');
 
         // Logo image.
         $fs = get_file_storage();
         $filerecord = new stdClass();
-        $filerecord->component = 'theme_academi';
+        $filerecord->component = 'theme_next_theme';
         $filerecord->contextid = context_system::instance()->id;
         $filerecord->userid = get_admin()->id;
         $filerecord->filearea = 'logo';
         $filerecord->filepath = '/';
         $filerecord->itemid = 0;
         $filerecord->filename = 'logo.png';
-        $fs->create_file_from_pathname($filerecord, $CFG->dirroot . '/theme/academi/pix/home/logo.png');
+        $fs->create_file_from_pathname($filerecord, $CFG->dirroot . '/theme/next_theme/pix/home/logo.png');
 
         // Footer logo image.
         $fs = get_file_storage();
         $filerecord = new stdClass();
-        $filerecord->component = 'theme_academi';
+        $filerecord->component = 'theme_next_theme';
         $filerecord->contextid = context_system::instance()->id;
         $filerecord->userid = get_admin()->id;
         $filerecord->filearea = 'footerlogo';
         $filerecord->filepath = '/';
         $filerecord->itemid = 0;
         $filerecord->filename = 'footerlogo.png';
-        $fs->create_file_from_pathname($filerecord, $CFG->dirroot . '/theme/academi/pix/home/footerlogo.png');
+        $fs->create_file_from_pathname($filerecord, $CFG->dirroot . '/theme/next_theme/pix/home/footerlogo.png');
 
         // Marketing spot image.
         $fs = get_file_storage();
         $filerecord = new stdClass();
-        $filerecord->component = 'theme_academi';
+        $filerecord->component = 'theme_next_theme';
         $filerecord->contextid = context_system::instance()->id;
         $filerecord->userid = get_admin()->id;
         $filerecord->filearea = 'mspotmedia';
         $filerecord->filepath = '/';
         $filerecord->itemid = 0;
         $filerecord->filename = 'mspotmedia.png';
-        $fs->create_file_from_pathname($filerecord, $CFG->dirroot . '/theme/academi/pix/home/mspotmedia.png');
+        $fs->create_file_from_pathname($filerecord, $CFG->dirroot . '/theme/next_theme/pix/home/mspotmedia.png');
 }
