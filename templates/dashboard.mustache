@@ -1,0 +1,173 @@
+{{! Next Theme - Modern Dashboard Template }}
+<div class="dashboard-container">
+    {{! Statistics Cards Grid }}
+    <div class="stats-grid">
+        {{! Avg Quiz Score Card }}
+        <div class="stat-card fade-in">
+            <div class="stat-card-title">Avg Quiz Score</div>
+            <div class="stat-card-value">{{dashboarddata.quiz.avg_score}}%</div>
+            <div class="stat-card-change {{dashboarddata.quiz.change_type}}">
+                <span>{{#dashboarddata.quiz.change_type}}↘{{/dashboarddata.quiz.change_type}}{{^dashboarddata.quiz.change_type}}↗{{/dashboarddata.quiz.change_type}}</span>
+                <span>{{dashboarddata.quiz.change}}%</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Highest Score</span>
+                    <span>{{dashboarddata.quiz.max_score}}%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill primary" style="width: {{dashboarddata.quiz.max_score}}%"></div>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Lowest Score</span>
+                    <span>{{dashboarddata.quiz.min_score}}%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill secondary" style="width: {{dashboarddata.quiz.min_score}}%"></div>
+                </div>
+            </div>
+        </div>
+
+        {{! Total Time Spent Card }}
+        <div class="stat-card fade-in">
+            <div class="stat-card-title">Total Time Spent</div>
+            <div class="stat-card-value">{{dashboarddata.time.total_hours}} Hours</div>
+            <div class="stat-card-change {{dashboarddata.time.change_type}}">
+                <span>{{#dashboarddata.time.change_type}}↘{{/dashboarddata.time.change_type}}{{^dashboarddata.time.change_type}}↗{{/dashboarddata.time.change_type}}</span>
+                <span>{{dashboarddata.time.change}}%</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>This Week</span>
+                    <span>{{dashboarddata.time.week_hours}}H</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill primary" style="width: {{dashboarddata.time.week_hours}}%"></div>
+                </div>
+            </div>
+        </div>
+
+        {{! Weekly Streak Card }}
+        <div class="stat-card fade-in">
+            <div class="stat-card-title">Weekly Streak</div>
+            <div class="stat-card-value">{{dashboarddata.streak.current_streak}} Days</div>
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Longest Streak</span>
+                    <span>{{dashboarddata.streak.longest_streak}} days</span>
+                </div>
+            </div>
+            <div class="streak-container">
+                <div class="streak-days">
+                    {{#dashboarddata.streak.streak_days}}
+                    <div class="streak-day {{#completed}}{{/completed}}{{^completed}}incomplete{{/completed}}">{{day}}</div>
+                    {{/dashboarddata.streak.streak_days}}
+                </div>
+            </div>
+        </div>
+
+        {{! Global Ranking Card }}
+        <div class="stat-card fade-in">
+            <div class="stat-card-title">Global Ranking</div>
+            <div class="stat-card-value">#{{dashboarddata.ranking.rank}}</div>
+            <div class="stat-card-change neutral">
+                <span>of {{dashboarddata.ranking.total_learners}}K learners</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Top local rank</span>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="text-sm text-gray-600 mb-2">Top Performers</div>
+                <div class="space-y-2">
+                    {{#dashboarddata.ranking.top_performers}}
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 bg-{{color}}-500 rounded-full"></div>
+                        <span class="text-sm">{{name}}</span>
+                    </div>
+                    {{/dashboarddata.ranking.top_performers}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{! Chart Container }}
+    <div class="chart-container fade-in">
+        <div class="chart-header">
+            <div class="chart-title">Monthly Course Enrollments & Completion Rates</div>
+            <div class="chart-filters">
+                <button class="filter-btn active">1 Year</button>
+                <button class="filter-btn">6 Months</button>
+                <button class="filter-btn">3 Months</button>
+                <button class="filter-btn">1 Month</button>
+            </div>
+        </div>
+        
+        <div class="chart-legend">
+            <div class="legend-item">
+                <div class="legend-dot primary"></div>
+                <span>Completion Rate (%)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot secondary"></div>
+                <span>Enrollments</span>
+            </div>
+        </div>
+
+        <div class="chart-stats">
+            <div>
+                <div class="text-sm text-gray-600">Avg per month</div>
+                <div class="chart-average">1,250,00</div>
+            </div>
+            <div class="chart-change">
+                <span>↗</span>
+                <span>13,4%</span>
+            </div>
+        </div>
+
+        <div class="chart-area">
+            {{! Chart will be rendered here by JavaScript }}
+            <canvas id="enrollmentChart" width="800" height="300"></canvas>
+        </div>
+    </div>
+</div>
+
+{{! Additional Dashboard Components }}
+<div class="mt-6">
+    {{! Recent Activity }}
+    <div class="stat-card">
+        <div class="stat-card-title">Recent Activity</div>
+        <div class="space-y-3">
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                    <span class="text-blue-600 text-sm">📚</span>
+                </div>
+                <div class="flex-1">
+                    <div class="text-sm font-medium">Completed "Advanced JavaScript" course</div>
+                    <div class="text-xs text-gray-500">2 hours ago</div>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                    <span class="text-green-600 text-sm">🏆</span>
+                </div>
+                <div class="flex-1">
+                    <div class="text-sm font-medium">Achieved "Quiz Master" badge</div>
+                    <div class="text-xs text-gray-500">1 day ago</div>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                    <span class="text-purple-600 text-sm">📖</span>
+                </div>
+                <div class="flex-1">
+                    <div class="text-sm font-medium">Started "React Fundamentals" course</div>
+                    <div class="text-xs text-gray-500">3 days ago</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
